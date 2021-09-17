@@ -3,7 +3,7 @@ import '../styles/PlantItem.css'
 
 function Plantitem({light, water, id, name, cover}){        
     return (
-        <li key={id} className='lmj-plant-item' onClick={() => {handleClick(name)}}>
+        <li key={id} className='lmj-plant-item'>
             <img src={cover} className="lmj-plant-item-cover" alt={`${name} cover `}/>
             {name}
             <div>                
@@ -13,10 +13,5 @@ function Plantitem({light, water, id, name, cover}){
         </li>
     )
 }
-
-function handleClick(plantName){
-    alert(`Vosu allez acheter ${plantName}`)
-}
-
 
 export default Plantitem
