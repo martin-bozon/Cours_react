@@ -20,6 +20,7 @@ function handleClick(careType, scaleValue){
         case 1 : requirement = 'peu'; break;
         case 2 : requirement = 'modérement'; break;
         case 3 : requirement = 'beacoup'; break;
+        default : requirement = 'peu';
     }
     alert(`Ce composant est de type ${careType} et la plante à besoin de ${requirement} d'${need}`)
 }

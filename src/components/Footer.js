@@ -6,7 +6,7 @@ function Footer() {
 
 	function handleBlur(){
 		if(!inputValue.includes('@')){
-			alert("Attention il n\'y à pas d\'@, ceci n'est pas une adresse valide")
+			alert("Attention il n'y à pas d'@, ceci n'est pas une adresse valide")
 		}
 	}
 	function handleChange(e){
