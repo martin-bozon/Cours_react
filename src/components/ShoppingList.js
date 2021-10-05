@@ -1,12 +1,12 @@
 import { plantList } from "../datas/plantList"
 import '../styles/ShoppingList.css'
+import Categories from "./Categories"
 import Plantitem from "./Plantitem"
+import { useState } from 'react/cjs/react.development';
 
 function ShoppingList({cart, updateCart}){
-    const category = plantList.reduce(
-        (acc, plant) => acc.includes(plant.category) ? acc : acc.concat(plant.category),
-        []
-    )
+
+    const [currentCat, updateCurrentCat] = useState("")      
     function addToCart(name, price){
         const currentPlantSaved = cart.find((plant) => plant.name === name)
         if(currentPlantSaved){
@@ -24,27 +24,36 @@ function ShoppingList({cart, updateCart}){
     }
     return(
        <div>
-           <ul>
-                {
-                    category.map((cat)=>(
-                        <li key={cat} >{cat}</li>
-                    ))
-                }
-           </ul>
+           <Categories categorie={currentCat} updateCategorie={updateCurrentCat}/>                     
            <ul className='lmj-plant-list'>
-                {                    
-                    plantList.map(({id, name, cover, light, water, price}) =>(   
-                        <div key={id}>
-                            <Plantitem 
-                                name={name} 
-                                cover={cover}                                 
-                                light={light} 
-                                water={water}
-                                price={price}
-                            />
-                            <button onClick={() => addToCart(name, price)}>Ajouter</button>                            
-                        </div>                               
-                    ))
+                {                                                
+                    currentCat === "" ? (
+                        plantList.map(({id, name, cover, light, water, price}) =>(                               
+                            <div key={id}>
+                                <Plantitem 
+                                    name={name} 
+                                    cover={cover}                                 
+                                    light={light} 
+                                    water={water}
+                                    price={price}
+                                />
+                                <button onClick={() => addToCart(name, price)}>Ajouter</button>                            
+                            </div>                               
+                        ))
+                    ) : (
+                        plantList.filter(plant => plant.category === currentCat.cat).map(({id, name, cover, light, water, price})=>(
+                            <div key={id}>
+                                <Plantitem 
+                                    name={name} 
+                                    cover={cover}                                 
+                                    light={light} 
+                                    water={water}
+                                    price={price}
+                                />
+                                <button onClick={() => addToCart(name, price)}>Ajouter</button>                            
+                            </div>            
+                        ))                          
+                    )                   
                 }
            </ul>
        </div>

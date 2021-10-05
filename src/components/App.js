@@ -8,6 +8,7 @@ import { useState } from 'react/cjs/react.development';
 
 function App() {
   const [cart, updateCart] = useState([])
+  
   return (    
     <div>      
         <Banner />  
