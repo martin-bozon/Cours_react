@@ -11,7 +11,9 @@
 	justify-content: center;
 	flex-direction: column;
 	text-transform: capitalize;
+	position: relative;
 }
+
 .lmj-plant-item-price {
 	position: absolute;
 	border-radius: 20px 20px 20px 0;

@@ -6,7 +6,11 @@ import { useState } from 'react/cjs/react.development';
 
 function ShoppingList({cart, updateCart}){
 
-    const [currentCat, updateCurrentCat] = useState("")      
+    const [currentCat, updateCurrentCat] = useState("")    
+    const category = plantList.reduce(
+        (acc, plant) => acc.includes(plant.category) ? acc : acc.concat(plant.category),
+        []
+    )      
     function addToCart(name, price){
         const currentPlantSaved = cart.find((plant) => plant.name === name)
         if(currentPlantSaved){
@@ -23,8 +27,8 @@ function ShoppingList({cart, updateCart}){
         }
     }
     return(
-       <div>
-           <Categories categorie={currentCat} updateCategorie={updateCurrentCat}/>                     
+       <div className='lmj-shopping-list'>
+           <Categories categorie={currentCat} updateCategorie={updateCurrentCat} categories={category}/>                     
            <ul className='lmj-plant-list'>
                 {                                                
                     currentCat === "" ? (

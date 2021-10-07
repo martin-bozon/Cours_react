@@ -5,6 +5,10 @@
 	flex-wrap: wrap;
 	max-width: 800px;
 }
+.lmj-shopping-list {
+	width: 100%;
+}
+
 
 /* .lmj-plant-item {
 	border: solid 2px black;

@@ -1,12 +1,13 @@
 import '../styles/Cart.css'
-import { useState} from 'react'
+import { useState } from 'react'
+import React from 'react'
 
 function Cart({cart, updateCart}) {    
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)    
     const total = cart.reduce(
 		(acc, plantType) => acc + plantType.amount * plantType.price,
 		0
-	)
+	)       
     
     return (isOpen ? (
         <div className="lmj-cart">
